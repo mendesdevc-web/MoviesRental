@@ -1,1 +1,35 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="BuildingBlocks/MoveisRental.Core/MoveisRental.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/Service/" />
+  <Folder Name="/src/Service/Consumer/">
+    <Project Path="Service/Costumer/MoveisRentalConsumer/MoveisRentalConsumer.csproj" />
+  </Folder>
+  <Folder Name="/src/Service/Publisher/" />
+  <Folder Name="/src/Service/Publisher/Application/">
+    <Project Path="Service/Publisher/Application/MovieRental.Application/MovieRental.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/Service/Publisher/Domain/">
+    <Project Path="Service/Publisher/Domain/MoveisRental.Domain/MoveisRental.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/Service/Publisher/Infrastructure/">
+    <Project Path="Service/Publisher/Infrastructure/MoviesRental.Infrastructure/MoviesRental.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Service/Publisher/Presentation/">
+    <Project Path="Service/Publisher/Presentation/MoviesRental.WebApi/MoviesRental.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/" />
+  <Folder Name="/src/Shared/Queries/" />
+  <Folder Name="/src/Shared/Queries/Application/">
+    <Project Path="Shared/Queries/Application/MoviesRental.Query.Application/MoviesRental.Query.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/Queries/Domain/">
+    <Project Path="Shared/Queries/Domain/MoviesRental.Query.Domain/MoviesRental.Query.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/Queries/Domain/Models/" />
+  <Folder Name="/src/Shared/Queries/Infrastructure/">
+    <Project Path="Shared/Queries/Infrastructure/MoviesRental.Query.Infrastructure/MoviesRental.Query.Infrastructure.csproj" />
+  </Folder>
+</Solution>
