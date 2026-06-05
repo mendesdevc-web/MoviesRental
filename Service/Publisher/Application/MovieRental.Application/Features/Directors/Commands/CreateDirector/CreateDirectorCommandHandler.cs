@@ -32,7 +32,7 @@ namespace MovieRental.Application.Features.Directors.Commands.CreateDirector
             if(!result)
                 return default;
 
-            return new CreateDirectorResponse (director.Id.ToString(), director.FullName(), director.CreatedAt, director.UpdatedAt );
+            return new CreateDirectorResponse (director.Id.ToString(), director.FullName(), director.CreatedAt, director.UpdatedAt);
         }
     }
 }

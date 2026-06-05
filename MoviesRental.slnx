@@ -5,7 +5,7 @@
   </Folder>
   <Folder Name="/src/Service/" />
   <Folder Name="/src/Service/Consumer/">
-    <Project Path="Service/Costumer/MoveisRentalConsumer/MoveisRentalConsumer.csproj" />
+    <Project Path="Service/Costumer/MoveisRentalConsumer/MoveisRental.Consumer.csproj" />
   </Folder>
   <Folder Name="/src/Service/Publisher/" />
   <Folder Name="/src/Service/Publisher/Application/">
@@ -28,7 +28,6 @@
   <Folder Name="/src/Shared/Queries/Domain/">
     <Project Path="Shared/Queries/Domain/MoviesRental.Query.Domain/MoviesRental.Query.Domain.csproj" />
   </Folder>
-  <Folder Name="/src/Shared/Queries/Domain/Models/" />
   <Folder Name="/src/Shared/Queries/Infrastructure/">
     <Project Path="Shared/Queries/Infrastructure/MoviesRental.Query.Infrastructure/MoviesRental.Query.Infrastructure.csproj" />
   </Folder>

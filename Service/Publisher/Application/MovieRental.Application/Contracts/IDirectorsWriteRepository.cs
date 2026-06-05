@@ -9,6 +9,7 @@ namespace MovieRental.Application.Contracts
 {
     public interface IDirectorsWriteRepository : IWriteRepository<Director>
     {
+        Task GetByIdAsync(Guid id, CancellationToken cancellationToken);
         Task<Director> GetDirectorWithMovies(Guid id);
     }
 }
