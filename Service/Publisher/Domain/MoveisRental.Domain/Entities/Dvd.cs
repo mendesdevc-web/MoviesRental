@@ -60,6 +60,7 @@ namespace MoveisRental.Domain.Entities
             UpdateCopies(copies);
         }
 
+
         public void UpdateTitle(string title)
         {
             if (!Available)
@@ -101,7 +102,7 @@ namespace MoveisRental.Domain.Entities
             UpdatedAt = DateTime.Now;
         }
 
-        public void UpdatePublished(DateTime date)
+        public void UpdatePublishedDate(DateTime date)
         {
             if (!Available)
                 throw new DomainException($"Dvd {Title} is not available.");
@@ -138,7 +139,7 @@ namespace MoveisRental.Domain.Entities
             UpdatedAt = DateTime.Now;
         }
 
-        public void DeleteDvt()
+        public void DeleteDvd()
         {
             if (!Available) 
                 throw new DomainException("Dvd is not available for deletion.");
