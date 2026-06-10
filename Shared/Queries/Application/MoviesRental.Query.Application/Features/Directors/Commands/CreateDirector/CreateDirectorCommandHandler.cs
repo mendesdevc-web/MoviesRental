@@ -1,11 +1,7 @@
 ﻿using MediatR;
 using MoviesRental.Query.Application.Contracts;
 using MoviesRental.Query.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MoviesRental.Query.Application.Features.Directors.Commands.CreateDirector
 {

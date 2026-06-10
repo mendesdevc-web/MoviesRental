@@ -12,7 +12,7 @@ namespace MoviesRental.Query.Domain.Models
         [BsonId]
         public string Id { get; set; }
         public string Title { get; set; }
-        public int Genre { get; set; }
+        public string Genre { get; set; }
         public DateTime Published { get; set; }
         public bool Available { get; set; }
         public int Copies { get; set; }
