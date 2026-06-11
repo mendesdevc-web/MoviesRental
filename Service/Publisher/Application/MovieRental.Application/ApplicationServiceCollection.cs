@@ -15,7 +15,6 @@ namespace MovieRental.Application
         {
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), ServiceLifetime.Scoped);
             services.AddMediatR(options => options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            
         }
     }
 }
