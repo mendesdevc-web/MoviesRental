@@ -1,5 +1,5 @@
 ﻿using MassTransit;
-using MassTransit.Mediator;
+using MediatR;
 using MoveisRental.Core.EventBus.Events;
 using MoviesRental.Query.Application.Features.Directors.Commands.UpdateDirector;
 
@@ -24,7 +24,7 @@ namespace MoveisRental.Consumer.Cosumers.Directors
                 var command = new UpdateDirectorCommand(@event.Id, @event.FullName, @event.UpdatedAt);
 
                 _logger.LogInformation($"Updating Director {@event.FullName}");
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
 
                 if (!response)
                 {

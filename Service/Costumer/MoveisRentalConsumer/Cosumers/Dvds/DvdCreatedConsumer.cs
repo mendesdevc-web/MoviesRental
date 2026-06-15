@@ -33,7 +33,7 @@ namespace MoveisRental.Consumer.Cosumers.Dvds
                     @event.UpdatedAt);
 
                 _logger.LogInformation($"Creating dvd {command.Title}");
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
 
                 if (!response)
                     throw new InvalidOperationException($"Something wrong happened during the creation of dvd {command.Id}");

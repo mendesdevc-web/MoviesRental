@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using MediatR;
 using MoveisRental.Core.EventBus.Events;
 using MoviesRental.Query.Application.Features.Dvds.Commands.RentDvd;
 
@@ -6,10 +7,10 @@ namespace MoveisRental.Consumer.Cosumers.Dvds
 {
     public class DvdRentedConsumer : IConsumer<DvdRentedEvent>
     {
-        private readonly IMediatorHandler _mediator;
+        private readonly IMediator _mediator;
         private readonly ILogger<DvdRentedConsumer> _logger;
 
-        public DvdRentedConsumer(IMediatorHandler mediator, ILogger<DvdRentedConsumer> logger)
+        public DvdRentedConsumer(IMediator mediator, ILogger<DvdRentedConsumer> logger)
         {
             _mediator = mediator;
             _logger = logger;
@@ -29,7 +30,7 @@ namespace MoveisRental.Consumer.Cosumers.Dvds
                 var command = new RentDvdCommand(@event.Id, @event.UpdatedAt);
                 _logger.LogInformation($"Renting dvd {@event.Id}");
 
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
                 if (!response)
                 {
                     _logger.LogError($"Something wrong happened during the rent of dvd {@event.Id}");

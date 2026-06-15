@@ -1,11 +1,6 @@
 ﻿using MoveisRental.Core.DomainObjects;
 using MoveisRental.Domain.Entities.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace MoveisRental.Domain.Entities
 {
@@ -25,7 +20,7 @@ namespace MoveisRental.Domain.Entities
             Available = true;
             UpdateTitle(title);
             UpdateGenre(genre);
-            UpdatePublished(published);
+            UpdatePublishedDate(published);
             UpdateCopies(copies);
             UpdateDirector(directorId);
         }

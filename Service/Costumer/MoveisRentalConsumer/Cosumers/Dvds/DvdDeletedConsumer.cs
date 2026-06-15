@@ -31,7 +31,7 @@ namespace MoveisRental.Consumer.Cosumers.Dvds
                 var command = new DeleteDvdCommand(@event.Id, @event.DeletedAt);
                 _logger.LogInformation($"Deleting dvd {@event.Id}");
 
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
                 if (!response)
                 {
                     _logger.LogError($"Something wrong happened during the delete of dvd {@event.Id}");

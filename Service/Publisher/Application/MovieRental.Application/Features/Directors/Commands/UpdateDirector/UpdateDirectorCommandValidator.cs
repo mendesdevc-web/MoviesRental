@@ -20,7 +20,7 @@ namespace MovieRental.Application.Features.Directors.Commands.UpdateDirector
                 .NotEmpty().WithMessage(ValidationMessages.ERROR_MESSAGE)
                 .MinimumLength(Director.Min_Length).WithMessage(ValidationMessages.MIN_LENGTH_ERROR_MESSAGE);
 
-            RuleFor(x => x.Surname)
+            RuleFor(x => x.FullName)
                 .NotEmpty().WithMessage(ValidationMessages.ERROR_MESSAGE)
                 .MinimumLength(Director.Min_Length).WithMessage(ValidationMessages.MIN_LENGTH_ERROR_MESSAGE);
         }

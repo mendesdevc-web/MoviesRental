@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using MediatR;
 using MoveisRental.Core.EventBus.Events;
 using MoviesRental.Query.Application.Features.Dvds.Commands.UpdateDvd;
 
@@ -6,10 +7,10 @@ namespace MoveisRental.Consumer.Cosumers.Dvds
 {
     public class DvdUpdatedConsumer : IConsumer<DvdUpdatedEvent>
     {
-        private readonly IMediatorHandler _mediator;
+        private readonly IMediator _mediator;
         private readonly ILogger<DvdUpdatedConsumer> _logger;
 
-        public DvdUpdatedConsumer(IMediatorHandler mediator, ILogger<DvdUpdatedConsumer> logger)
+        public DvdUpdatedConsumer(IMediator mediator, ILogger<DvdUpdatedConsumer> logger)
         {
             _mediator = mediator;
             _logger = logger;
@@ -24,7 +25,7 @@ namespace MoveisRental.Consumer.Cosumers.Dvds
                 var command = new UpdateDvdCommand(@event.Id, @event.Title, @event.Genre, @event.Published, @event.Copies, @event.DirectorId, @event.UpdatedAt);
 
                 _logger.LogInformation($"Updating dvd {@event.Title}");
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
 
                 if (!response)
                 {

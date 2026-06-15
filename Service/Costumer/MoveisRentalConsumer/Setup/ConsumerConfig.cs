@@ -1,5 +1,12 @@
-﻿using Microsoft.Extensions.Options;
+﻿using MassTransit;
+using MediatR;
+using Microsoft.Extensions.Options;
+using MoveisRental.Consumer.Cosumers.Directors;
+using MoveisRental.Consumer.Cosumers.Dvds;
+using MoveisRental.Core.EventBus;
 using MoviesRental.Query.Infrastructure.Settings;
+using MoviesRental.Query.Application;
+using MoviesRental.Query.Infrastructure;
 
 namespace MoveisRental.Consumer.Setup
 {
@@ -58,7 +65,7 @@ namespace MoveisRental.Consumer.Setup
                     });
                 });
             });
-            services.AddScoped<IMediatorHandler, MediatorHandler>();
+            services.AddScoped<IMediator, Mediator>();
             return services;
         }
     }

@@ -1,5 +1,5 @@
 ﻿using MassTransit;
-using MassTransit.Mediator;
+using MediatR;
 using MoveisRental.Core.EventBus.Events;
 using MoviesRental.Query.Application.Features.Directors.Commands.DeleteDirector;
 
@@ -24,7 +24,7 @@ namespace MoveisRental.Consumer.Cosumers.Directors
                 var command = new DeleteDirectorCommand(@event.Id);
 
                 _logger.LogInformation($"Removing director {@event.Id}");
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
 
                 if (!response)
                     throw new InvalidOperationException($"Something wrong happened during the process of removing director {@event.Id}");

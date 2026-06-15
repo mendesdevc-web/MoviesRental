@@ -26,7 +26,7 @@ namespace MovieRental.Application.Features.Directors.Commands.UpdateDirector
                 return default;
 
             director.UpdateName(request.Name);
-            director.UpdateSurname(request.Surname);
+            director.UpdateSurname(request.FullName);
 
             var result = await _repository.Update(director);
             if (!result)

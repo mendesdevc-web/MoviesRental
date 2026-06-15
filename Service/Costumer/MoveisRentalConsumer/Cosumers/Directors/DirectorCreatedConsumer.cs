@@ -1,5 +1,5 @@
 ﻿using MassTransit;
-using MassTransit.Mediator;
+using MediatR;
 using MoveisRental.Core.EventBus.Events;
 using MoviesRental.Query.Application.Features.Directors.Commands.CreateDirector;
 
@@ -24,7 +24,7 @@ namespace MoveisRental.Consumer.Cosumers.Directors
                 var command = new CreateDirectorCommand(@event.Id, @event.FullName, @event.CreatedAt, @event.UpdatedAt);
                 _logger.LogInformation($"Creating director {command.FullName}");
 
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
                 if (!response)
                 {
                     _logger.LogError($"Something wrong happened during the creation of director {@event.Id}");

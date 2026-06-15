@@ -2,6 +2,8 @@
 using MoviesRental.Query.Infrastructure;
 using MoviesRental.Query.Application;
 using MoviesRental.WebApi.Cache;
+using MovieRental.Application;
+using MediatR;
 
 
 
@@ -16,7 +18,7 @@ namespace MoviesRental.WebApi.Setup
             services.AddQueryApplication();
             services.AddQueryInfrastructure();
             services.AddScoped<ICacheRepository, CacheRepository>();
-           // services.AddScoped<IMediatorHandler, MediatorHandler>();
+            services.AddScoped<IMediator, Mediator>();
             return services;
         }
     }

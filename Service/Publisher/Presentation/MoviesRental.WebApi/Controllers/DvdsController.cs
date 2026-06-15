@@ -1,5 +1,5 @@
 ﻿using MassTransit;
-using MassTransit.Mediator;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MoveisRental.Core.EventBus.Events;
 using MovieRental.Application.Features.Dvds.Commands.CreateDvd;
@@ -38,7 +38,7 @@ namespace MoviesRental.WebApi.Controllers
 
             var query = new GetDvdQuery(title);
 
-            response = (GetDvdResponse)await _mediator.SendQuery(query, HttpContext.RequestAborted);
+            response = (GetDvdResponse)await _mediator.Send(query, HttpContext.RequestAborted);
 
             if (response is null)
                 return CustomResponse((int)HttpStatusCode.NotFound, false);
@@ -54,7 +54,7 @@ namespace MoviesRental.WebApi.Controllers
         public async Task<ActionResult<CreateDvdResponse>> CreateDvd(
             [FromBody] CreateDvdCommand command)
         {
-            var response = (CreateDvdResponse)await _mediator.SendCommand(command, HttpContext.RequestAborted);
+            var response = await _mediator.Send(command, HttpContext.RequestAborted);
 
             if (response is null)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
@@ -81,7 +81,7 @@ namespace MoviesRental.WebApi.Controllers
         public async Task<ActionResult<UpdateDvdResponse>> UpdateDvd(
             [FromBody] UpdateDvdCommand command)
         {
-            var response = (UpdateDvdResponse)await _mediator.SendCommand(command, HttpContext.RequestAborted);
+            var response = await _mediator.Send(command, HttpContext.RequestAborted);
 
             if (response is null)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
@@ -105,7 +105,7 @@ namespace MoviesRental.WebApi.Controllers
         public async Task<ActionResult> RentDvd([FromRoute] Guid id)
         {
             var command = new RentDvdCommand(id);
-            var response = (RentDvdResponse)await _mediator.SendCommand(command, HttpContext.RequestAborted);
+            var response = await _mediator.Send(command, HttpContext.RequestAborted);
 
             if (response is null)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
@@ -122,7 +122,7 @@ namespace MoviesRental.WebApi.Controllers
         public async Task<ActionResult> ReturnDvd([FromRoute] Guid id)
         {
             var command = new ReturnDvdCommand(id);
-            var response = (ReturnDvdResponse)await _mediator.SendCommand(command, HttpContext.RequestAborted);
+            var response = await _mediator.Send(command, HttpContext.RequestAborted);
 
             if (response is null)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);
@@ -140,7 +140,7 @@ namespace MoviesRental.WebApi.Controllers
             [FromRoute] Guid id)
         {
             var command = new DeleteDvdCommand(id);
-            var response = (DeleteDvdResponse)await _mediator.SendCommand(command, HttpContext.RequestAborted);
+            var response = await _mediator.Send(command, HttpContext.RequestAborted);
 
             if (response is null)
                 return CustomResponse((int)HttpStatusCode.BadRequest, false);

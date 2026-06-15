@@ -31,7 +31,7 @@ namespace MoveisRental.Consumer.Cosumers.Dvds
                 var command = new ReturnDvdCommand(@event.Id, @event.UpdatedAt);
                 _logger.LogInformation($"Returning dvd {@event.Id}");
 
-                var response = await _mediator.SendCommandAndReturnBool(command, default);
+                var response = await _mediator.Send(command, default);
                 if (!response)
                 {
                     _logger.LogError($"Something wrong happened during the return of dvd {@event.Id}");

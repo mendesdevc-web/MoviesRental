@@ -13,5 +13,5 @@ namespace MovieRental.Application.Features.Dvds.Commands.CreateDvd
         int Genre,
         DateTime Published,
         int Copies,
-        Guid DirectorId) : IRequest, IRequest<CreateDvdResponse>;
+        Guid DirectorId) : IRequest<CreateDvdResponse>;
 }

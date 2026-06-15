@@ -1,4 +1,4 @@
-﻿using Amazon.Runtime;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Data.SqlClient;
 using MoveisRental.Core.DomainObjects;
 using System.ComponentModel.DataAnnotations;
@@ -14,31 +14,29 @@ namespace MoviesRental.WebApi.Setup
             this.logger = logger;
         }
 
-        public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+        public async ValueTask<bool> TryHandleAsync(
+            HttpContext httpContext,
+            Exception exception,
+            CancellationToken cancellationToken)
         {
             (int statusCode, string errorMessage) = exception switch
             {
-                ArgumentNullException argumentException => (500, argumentException.Message),
-                DomainException domainException => (500, domainException.Message),
-                SqlException sqlException => (500, sqlException.Message),
-                ValidationException validationException => (500, validationException.Message),
+                ArgumentNullException ex => (500, ex.Message),
+                DomainException ex => (500, ex.Message),
+                SqlException ex => (500, ex.Message),
+                ValidationException ex => (500, ex.Message),
                 _ => (500, "Something went wrong")
             };
 
             logger.LogError(exception, exception.Message);
+
             httpContext.Response.StatusCode = statusCode;
-            await httpContext.Response.WriteAsJsonAsync(errorMessage, cancellationToken);
+
+            await httpContext.Response.WriteAsJsonAsync(
+                errorMessage,
+                cancellationToken);
+
             return true;
-        }
-
-        bool IExceptionHandler.Handle(IExecutionContext executionContext, Exception exception)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<bool> IExceptionHandler.HandleAsync(IExecutionContext executionContext, Exception exception)
-        {
-            throw new NotImplementedException();
         }
     }
 }
